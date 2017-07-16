@@ -5,7 +5,7 @@ import SearchBar from './components/search_bar';
 
 const API_KEY = 'AIzaSyDky8aONBX8Jep3OnK9WnTFyElj7ew5Ass';
 // Creating a new component to produce HTML
-// This is like a factory producing instances of App - a class
+// This is like a factory producing instances of App - a functional based component
 const App = () => {
     return (
         <div>

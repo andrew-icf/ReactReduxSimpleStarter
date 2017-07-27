@@ -15,7 +15,7 @@ class SearchBar extends Component {
     render() {  // just one parameter you don't need parentesis for es6 fat arrow
         // Always manipulate the value of the state with this.setState()
         return (
-            <div>
+            <div className="search-bar">
                 <input
                     value={this.state.term}
                     onChange={event => this.setState({ term: event.target.value})}  />
@@ -41,3 +41,7 @@ export default SearchBar;
 
 // this.state.term = event.target.value; = BAD CODE!!!!!
 // ***** this.state.term is for referencing not setting
+
+// ---------------- Styling -------------------
+// Good idea to make the top level element(div)'s className the same name
+// SearchBar = search-bar 

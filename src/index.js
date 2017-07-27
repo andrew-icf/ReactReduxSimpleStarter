@@ -12,20 +12,29 @@ class App extends Component {
     constructor(props){
         super(props);
 
-        this.state = { videos: [] };
-                                                    // data
+        this.state = {
+            videos: [],
+            selectedVideo: null
+        };
+                            // data
         // Automatically populate data by putting this function in the constructor
         YTSearch({ key: API_KEY, term: 'surfing' }, (videos) => {
-            this.setState({ videos }); // syntactic sugar, when the key and the value are the same variable name
-            // this.setState({ videos: videos});
+            this.setState({
+                videos: videos,
+                selectedVideo: videos[0]
+             });
+            // syntactic sugar, when the key and the value are
+            // the same variable name => videos: videos is the same as videos
         });
     }
     render() {
         return (
             <div>
                 <SearchBar />
-                <VideoDetail video={this.state.videos[0]}/>
-                <VideoList videos={this.state.videos} />
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos} />
             </div>
         );
     }

@@ -12,15 +12,18 @@ class SearchBar extends Component {
         this.state = { term : ''};
     }
 
-    render() {  // just one parameter you don't need parentesis for es6 fat arrow
-        // Always manipulate the value of the state with this.setState()
+    render() {
         return (
             <div className="search-bar">
                 <input
                     value={this.state.term}
-                    onChange={event => this.setState({ term: event.target.value})}  />
+                    onChange={event => this.onInputChange(event.target.value)}  />
             </div>
         );
+    }
+    onInputChange(term) {
+        this.setState({term});
+        this.props.onSearchTermChange(term);
     }
 }
 
@@ -38,10 +41,12 @@ export default SearchBar;
 // onInputChange(event) {
 //     console.log(event.target.value); // target is targeting 'input' i.e. input.value
 // }
+// just one parameter you don't need parentesis for es6 fat arrow
+// Always manipulate the value of the state with this.setState()
 
 // this.state.term = event.target.value; = BAD CODE!!!!!
 // ***** this.state.term is for referencing not setting
 
 // ---------------- Styling -------------------
 // Good idea to make the top level element(div)'s className the same name
-// SearchBar = search-bar 
+// SearchBar = search-bar
